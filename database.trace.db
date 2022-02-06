@@ -1,0 +1,3 @@
+2022-02-06 10:15:19 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DEPARMENT_PRODUCT" not found; SQL statement:
+ALTER TABLE DEPARMENT_PRODUCT RENAME TO DEPARTMENT_PRODUCT [42102-200]
