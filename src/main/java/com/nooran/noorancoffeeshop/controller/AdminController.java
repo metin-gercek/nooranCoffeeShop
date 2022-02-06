@@ -22,5 +22,15 @@ public class AdminController {
 		
 		return "products";
 	}
+    @GetMapping("admin/manufacturers")
+    public String getManufacturers() {
+		
+		return "manufacturers";
+	}
+    @GetMapping("admin/suppliers")
+    public String getSupplier() {
+		
+		return "suppliers";
+	}
 
 }
