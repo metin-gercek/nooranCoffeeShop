@@ -19,7 +19,9 @@ public class AdminController {
 
 	@Autowired
     CategoryService categoryService;
+	@Autowired
 	ManufacturerService manufacturerService;
+	@Autowired
 	SupplierService supplierService;
     @GetMapping("/admin")
 	public String adminHome() {
@@ -79,13 +81,13 @@ public class AdminController {
     @GetMapping("/admin/suppliers/add")
     public String getSupplierAdd(Model model) {
 		model.addAttribute("supplier", new Supplier());
-		return "suppliers";
+		return "suppliersAdd";
 	}
 
     @PostMapping("/admin/suppliers/add")
     public String postSupplierAdd(@ModelAttribute("supplier")  Supplier supplier) {
 		supplierService.addSupplier(supplier);
-		return "redirect:admin/suppliers";
+		return "redirect:/admin/suppliers";
 	}
 
 }
