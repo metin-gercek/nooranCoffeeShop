@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
@@ -35,16 +36,16 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
+<div class="container">
 
-    <a th:href="@{/admin/suppliers/add}" style="margin: 20px 0" class="btn btn-primary">Add Supplier</a>
+    <a th:href="@{/admin/suppliers/add}" style="margin: 20px 0" class="btn btn-primary">Add Category</a>
     <table class="table">
         <thead class="thead-light">
         <tr>
             <th scope="col">SN</th>
+            <th scope="col">Contact Person</th>
+            <th scope="col">Contact Person Email</th>
             <th scope="col">Supplier Name</th>
-            <th scope="col">Category</th>
-            <th scope="col">Preview</th>
             <th scope="col">Delete</th>
             <th scope="col">Update</th>
         </tr>
@@ -53,12 +54,12 @@
 
         <tr th:each="supplier, iStat : ${suppliers}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${supplier.name}">Larry</td>
-            <td th:text="${supplier.category.name}">Larry</td>
-            <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + product.imageName}}"></td>
+            <td th:text="${supplier.contactPerson}"></td>
+            <td th:text="${supplier.contactPersonEmail}"></td>
+            <td th:text="${supplier.name}"></td>
 
-            <td><a href="" th:href="@{/admin/supplier/delete/{id}(id=${supplier.id})}" class="btn btn-danger">Delete</a></td>
-            <td><a href="" th:href="@{/admin/supplier/update/{id}(id=${supplier.id})}" class="btn btn-warning">Update</a></td>
+            <td><a href="" th:href="@{/admin/suppliers/delete/{id}(id=${supplier.id})}" class="btn btn-danger">Delete</a></td>
+            <td><a href="" th:href="@{/admin/suppliers/update/{id}(id=${supplier.id})}" class="btn btn-warning">Update</a></td>
 
         </tr>
         </tbody>

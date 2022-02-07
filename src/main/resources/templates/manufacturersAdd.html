@@ -37,29 +37,22 @@
     </div>
 </nav>
 <div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <form th:action="@{/admin/manufacturers/add}" method="post" th:object="${manufacturer}">
+                <input type="hidden" name="id"  th:field="*{id}">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">
+                    <label for="url">Url</label>
+                    <input type="text" class="form-control" required th:field="*{url}" name="url" id="url"  placeholder="Enter url">
 
-    <a th:href="@{/admin/categories/add}" style="margin: 20px 0" class="btn btn-primary">Add Category</a>
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-            <th scope="col">SN</th>
-            <th scope="col">Category Name</th>
-            <th scope="col">Delete</th>
-            <th scope="col">Update</th>
-        </tr>
-        </thead>
-        <tbody>
+                </div>
 
-        <tr th:each="category, iStat : ${categories}">
-            <th scope="row" th:text="${iStat.index + 1}">1</th>
-            <td th:text="${category.name}"></td>
-
-            <td><a href="" th:href="@{/admin/categories/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a></td>
-            <td><a href="" th:href="@{/admin/categories/update/{id}(id=${category.id})}" class="btn btn-warning">Update</a></td>
-
-        </tr>
-        </tbody>
-    </table>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
 </div>
 
 
