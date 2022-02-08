@@ -1,6 +1,7 @@
 package com.nooran.noorancoffeeshop.service;
 
 import java.util.List;
+import java.util.Optional;
 import com.nooran.noorancoffeeshop.model.Supplier;
 import com.nooran.noorancoffeeshop.repository.SupplierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,11 @@ public class SupplierService {
         supplierRepository.save(supplier);
     }
 
+    public void removeSupplierById(int id) {
+        supplierRepository.deleteById(id);
+    }
+
+    public Optional<Supplier> getSupplierById(int id) {
+        return supplierRepository.findById(id);
+    }
 }
