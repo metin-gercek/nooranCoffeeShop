@@ -2,11 +2,13 @@ package com.nooran.noorancoffeeshop.controller;
 
 import java.util.Optional;
 
+import com.nooran.noorancoffeeshop.dto.ProductDTO;
 import com.nooran.noorancoffeeshop.model.Category;
 import com.nooran.noorancoffeeshop.model.Manufacturer;
 import com.nooran.noorancoffeeshop.model.Supplier;
 import com.nooran.noorancoffeeshop.service.CategoryService;
 import com.nooran.noorancoffeeshop.service.ManufacturerService;
+import com.nooran.noorancoffeeshop.service.ProductService;
 import com.nooran.noorancoffeeshop.service.SupplierService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,8 @@ public class AdminController {
 	ManufacturerService manufacturerService;
 	@Autowired
 	SupplierService supplierService;
+	@Autowired
+	ProductService productService;
 
 	@GetMapping("/admin")
 	public String adminHome() {
@@ -33,6 +37,7 @@ public class AdminController {
 		return "adminHome";
 	}
 
+	// Category section
 	@GetMapping("/admin/categories")
 	public String getCat(Model model) {
 		model.addAttribute("categories", categoryService.getAllCategory());
@@ -68,12 +73,23 @@ public class AdminController {
 
 	}
 
-	@GetMapping("/admin/products")
-	public String getProducts() {
+	// Product section
 
+	@GetMapping("/admin/products")
+	public String getProducts(Model model) {
+		model.addAttribute("products", productService.getAllProduct());
 		return "products";
 	}
 
+	@GetMapping("/admin/products/add")
+	public String getProductsAdd(Model model) {
+		model.addAttribute("productDTO", new ProductDTO());
+		model.addAttribute("categories", categoryService.getAllCategory());
+		return "productsAdd";
+	}
+
+
+	// Manufacturer section
 	@GetMapping("/admin/manufacturers")
 	public String getMan(Model model) {
 		model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
@@ -108,6 +124,9 @@ public class AdminController {
 		return "404";
 
 	}
+
+
+	// Supplier section
 
 	@GetMapping("/admin/suppliers")
 	public String getSupplier(Model model) {
