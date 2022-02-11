@@ -1,0 +1,5 @@
+2022-02-11 09:08:25 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM SUPPLIER 
+SELECT[*] * FROM CATEGORY"; SQL statement:
+SELECT * FROM SUPPLIER 
+SELECT * FROM CATEGORY [42000-200]

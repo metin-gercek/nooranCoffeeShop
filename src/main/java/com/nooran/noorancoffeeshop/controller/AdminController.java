@@ -1,10 +1,15 @@
 package com.nooran.noorancoffeeshop.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 
 import com.nooran.noorancoffeeshop.dto.ProductDTO;
 import com.nooran.noorancoffeeshop.model.Category;
 import com.nooran.noorancoffeeshop.model.Manufacturer;
+import com.nooran.noorancoffeeshop.model.Product;
 import com.nooran.noorancoffeeshop.model.Supplier;
 import com.nooran.noorancoffeeshop.service.CategoryService;
 import com.nooran.noorancoffeeshop.service.ManufacturerService;
@@ -18,10 +23,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class AdminController {
 
+
+	public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
 	@Autowired
 	CategoryService categoryService;
 	@Autowired
@@ -76,18 +85,47 @@ public class AdminController {
 	// Product section
 
 	@GetMapping("/admin/products")
-	public String getProducts(Model model) {
+	public String products(Model model) {
 		model.addAttribute("products", productService.getAllProduct());
 		return "products";
 	}
 
 	@GetMapping("/admin/products/add")
-	public String getProductsAdd(Model model) {
+	public String productAddGet(Model model) {
 		model.addAttribute("productDTO", new ProductDTO());
 		model.addAttribute("categories", categoryService.getAllCategory());
+		model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
+		model.addAttribute("suppliers", supplierService.getAllSupplier());
 		return "productsAdd";
 	}
 
+	@PostMapping("/admin/products/add")
+	public String productAddPost(@ModelAttribute("productDTO") ProductDTO productDTO,
+			@RequestParam("productImage") MultipartFile file,
+			@RequestParam("imgName") String imgName) throws IOException {
+
+		Product product = new Product();
+
+		product.setId(productDTO.getId());
+		product.setName(productDTO.getName());
+		product.setCategory(categoryService.getCategoryById(productDTO.getCategoryId()).get());
+		product.setManufacturer(manufacturerService.getManufacturerById(productDTO.getManufacturerId()).get());
+		product.setSupplier(supplierService.getSupplierById(productDTO.getSupplierId()).get());
+		product.setPrice(productDTO.getPrice());
+		product.setDescription(productDTO.getDescription());
+		String imageUUID;
+		if (!file.isEmpty()) {
+			imageUUID = file.getOriginalFilename();
+			Path fileNameAndPath = Paths.get(uploadDir, imageUUID);
+			Files.write(fileNameAndPath, file.getBytes());
+		} else {
+			imageUUID = imgName;
+		}
+		product.setImageName(imageUUID);
+		productService.addProduct(product);
+
+		return "redirect:/admin/products";
+	}
 
 	// Manufacturer section
 	@GetMapping("/admin/manufacturers")
@@ -124,7 +162,6 @@ public class AdminController {
 		return "404";
 
 	}
-
 
 	// Supplier section
 

@@ -1,6 +1,7 @@
 package com.nooran.noorancoffeeshop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.nooran.noorancoffeeshop.model.Product;
 import com.nooran.noorancoffeeshop.repository.ProductRepository;
@@ -15,6 +16,30 @@ public class ProductService {
     ProductRepository productRepository;
     public List<Product> getAllProduct() {
         return productRepository.findAll();
+    }
+
+    public void addProduct(Product product) {
+        productRepository.save(product);
+    }
+
+    public void removeProductById(long id){
+        productRepository.deleteById(id);
+    }
+
+    public Optional<Product> getProductById(long id) {
+        return productRepository.findById(id);
+    }
+
+    public List<Product> getAllProductsByCategoryId(int id) {
+        return productRepository.findAllByCategory_Id(id);
+    }
+
+    public List<Product> getAllProductsByManufacturerId(int id) {
+        return productRepository.findAllByManufacturer_Id(id);
+    }
+    
+    public List<Product> getAllProductsBySupplierId(int id) {
+        return productRepository.findAllBySupplier_Id(id);
     }
     
 }

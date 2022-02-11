@@ -44,6 +44,9 @@
             <th scope="col">SN</th>
             <th scope="col">Product Name</th>
             <th scope="col">Category</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Supplier</th>
+           
             <th scope="col">Preview</th>
             <th scope="col">Delete</th>
             <th scope="col">Update</th>
@@ -55,6 +58,9 @@
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${product.name}">Larry</td>
             <td th:text="${product.category.name}">Larry</td>
+            <td th:text="${product.manufacturer.name}">Larry</td>
+            <td th:text="${product.supplier.name}">Larry</td>
+            
             <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + product.imageName}}"></td>
 
             <td><a href="" th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></td>
