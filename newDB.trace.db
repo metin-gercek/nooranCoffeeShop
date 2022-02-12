@@ -3,3 +3,6 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT *
 SELECT[*] * FROM CATEGORY"; SQL statement:
 SELECT * FROM SUPPLIER 
 SELECT * FROM CATEGORY [42000-200]
+2022-02-11 20:14:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "DESCRIPTION VARCHAR(255)": "STRINGDECODE('Selke\u00e4 kosketuspaneeli LCD-tekstin\u00e4yt\u00f6ll\u00e4\r\nLatteCrema automaattinen maidonvaahdotus\r\nMyMen... (259)"; SQL statement:
+insert into product (category_id, description, image_name, manufacturer_id, name, price, supplier_id, id) values (?, ?, ?, ?, ?, ?, ?, ?) [22001-200]

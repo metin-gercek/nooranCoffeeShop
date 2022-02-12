@@ -30,8 +30,8 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public List<Product> getAllProductsByCategoryId(int id) {
-        return productRepository.findAllByCategory_Id(id);
+    public List<Product> getAllProductsByCategoryId(int parentId) {
+        return productRepository.findAllByCategory_Id(parentId);
     }
 
     public List<Product> getAllProductsByManufacturerId(int id) {
