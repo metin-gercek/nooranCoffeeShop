@@ -12,10 +12,10 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
+<body style="background-color: #f9e4d4 !important;">
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #f9e4d4 !important;" >
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
@@ -34,7 +34,7 @@
                     <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Sign Up</a>
+                    <a class="nav-link"  th:href="@{/register}" href="#">Sign Up</a>
                 </li>
 
             </ul>
@@ -50,27 +50,27 @@
             <form th:action="@{/login}" method="post">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Your Email" class="form-control form-control-lg">
+                    <input type="email" name="email" id="email" placeholder="Your Email" class="form-control form-control-lg" style="background-color: #e78b456c;">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" id="password">
+                    <input type="password" class="form-control form-control-lg" placeholder="Password" name="password" id="password" style="background-color: #e78b456c;">
                 </div>
                 <div th:if="${param.error}" class="alert alert-error text-danger">
                     Invalid username or password.
                 </div>
 
-                <input type="submit" value="Login" class="btn btn-primary btn-block">
+                <input type="submit" value="Login" class="btn btn-block" style="background-color: #9C0F48 !important; color: #f9e4d4;">
                 <br>
                 <span >Don't have an account <a class="linkControl" href="./register.html"
-                                                th:href="@{/register}">Register here</a></span>
+                                                th:href="@{/register}" style="text-decoration: none; color: #9C0F48;">Register here</a></span>
                 <br>
-                <a href="" th:href="@{/forgotpassword}">Forgot password ?</a>
+                <a href="" th:href="@{/forgotpassword}" style="text-decoration: none; color: #9C0F48;">Forgot password?</a>
             </form>
             <br>
-            <h3>OR</h3>
-            <a href="/oauth2/authorization/google" class="btn btn-primary">Sign-In with google </a>
+            <h5></h5>
+            <a href="/oauth2/authorization/google" class="btn" style="background-color: #9C0F48 !important; color: #f9e4d4;">Sign-in with Google </a>
 
         </div>
 
