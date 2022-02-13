@@ -1,6 +1,5 @@
 package com.nooran.noorancoffeeshop.configuration;
 
-import com.nooran.noorancoffeeshop.model.CustomUserDetail;
 import com.nooran.noorancoffeeshop.service.CustomUserDetailService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**", "/static/**", "/images/**", "/productimages/**", "/css/**", "/js/**");
+        web.ignoring().antMatchers("/resources/**", "/static/**", "/images/**", "/productImages/**", "/css/**", "/js/**");
     }
 
 

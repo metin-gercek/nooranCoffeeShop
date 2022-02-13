@@ -1,6 +1,6 @@
 package com.nooran.noorancoffeeshop.controller;
 
-import com.nooran.noorancoffeeshop.model.Manufacturer;
+import com.nooran.noorancoffeeshop.global.GlobalData;
 import com.nooran.noorancoffeeshop.service.CategoryService;
 import com.nooran.noorancoffeeshop.service.ManufacturerService;
 import com.nooran.noorancoffeeshop.service.ProductService;
@@ -25,6 +25,7 @@ public class HomeController {
 
     @GetMapping({"/", "/home"})
     public String home(Model model) {
+        model.addAttribute("cartCount", GlobalData.cart.size());
         return "index";
     }
 
@@ -34,6 +35,7 @@ public class HomeController {
         model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
         model.addAttribute("suppliers", supplierService.getAllSupplier());
         model.addAttribute("products", productService.getAllProduct());
+        model.addAttribute("cartCount", GlobalData.cart.size());
         return "shop";
     }
 
@@ -49,9 +51,11 @@ public class HomeController {
     @GetMapping("/shop/viewproduct/{id}")
     public String viewProduct(Model model, @PathVariable int id) {
         model.addAttribute("product", productService.getProductById(id).get());
+        model.addAttribute("cartCount", GlobalData.cart.size());
         return "viewProduct";
     }
 
+    
 
     
 }
