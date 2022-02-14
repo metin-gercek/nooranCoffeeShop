@@ -61,10 +61,10 @@
             <td th:text="${product.name}">Larry</td>
             <td th:text="${product.category.name}">Larry</td>
             <td><a th:href="${product.manufacturer.url}" th:text="${product.manufacturer.name}" target="_blank"></a></td>
-            <!-- <td th:text="${product.manufacturer.name}">Larry</td> -->
+            
             <td th:text="${product.supplier.name}">Larry</td>
             <td><a th:href="@{mailto:{to}(to=${product.supplier.contactPersonEmail})}" th:text="${product.supplier.contactPerson}"> </a></td>
-            <!-- <td th:text="${product.supplier.contactPerson}">Larry</td> -->
+           
             
             <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + product.imageName}}"></td>
             <td th:text="${product.price}">Larry</td>

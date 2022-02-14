@@ -111,20 +111,21 @@
                 style="margin-top: 20px; background-color: #f9e4d4;"
                 th:each="product : ${products}"
               >
-                <div class="row no-gutters">
+                <div class="row no-gutters " style="border: #9C0F48 solid 2px;">
                   <div class="col-sm-5 d-flex justify-content-center" style="padding: 50px;">
                     <img
                       class=""
-                      height="150px"
-                      width="150px"
+                      style="border: #9C0F48 solid 3px; border-radius: 5px;"
+                      height="250px"
+                      width="auto"
                       th:src="@{${'/productImages/' + product.imageName}}"
                       th:alt="${product.name}"
                     />
                   </div>
                   <div class="col-sm-7 d-flex justify-content-center">
                     <div class="card-body">
-                      <h5 class="card-title" th:text="${product.name}"></h5>
-                      <h4>€ <span th:text="${product.price}"></span></h4>
+                      <h3 class="card-title h3" th:text="${product.name}"></h3>
+                      <h4>Price: € <span th:text="${product.price}"></span></h4>
                       <p th:text="${product.description}"></p>
                       <a
                         href="#"
