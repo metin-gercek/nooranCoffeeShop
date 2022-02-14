@@ -11,8 +11,8 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+<body style="background-color: #f9e4d4 !important;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #f9e4d4 !important;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img th:src="@{/images/logo.png}"  src="../static/images/logo.png" width="auto" height="40" class="d-inline-block align-top" alt=""/>
@@ -43,15 +43,15 @@
                 <input type="hidden" name="id"  th:field="*{id}">
                 <div class="form-group">
                     <label for="contactPerson">Contact Person</label>
-                    <input type="text" class="form-control" required th:field="*{contactPerson}" name="contactPerson" id="contactPerson"  placeholder="Enter Contact Person Name">
+                    <input type="text" class="form-control" required th:field="*{contactPerson}" name="contactPerson" id="contactPerson"  placeholder="Enter contact person Name" style="background-color: #e78b456c;">
                     <label for="contactPersonEmail">Email</label>
-                    <input type="email" class="form-control" required th:field="*{contactPersonEmail}" name="contactPersonEmail" id="contactPersonEmail"  placeholder="Enter email">
+                    <input type="email" class="form-control" required th:field="*{contactPersonEmail}" name="contactPersonEmail" id="contactPersonEmail"  placeholder="Enter email" style="background-color: #e78b456c;">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"  placeholder="Enter name">
+                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"  placeholder="Enter supplier name" style="background-color: #e78b456c;">
 
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #9C0F48 !important; color: #f9e4d4; border-radius: 10px;">Submit</button>
             </form>
         </div>
     </div>
