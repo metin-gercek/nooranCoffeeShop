@@ -41,5 +41,7 @@ public class ProductService {
     public List<Product> getAllProductsBySupplierId(int id) {
         return productRepository.findAllBySupplier_Id(id);
     }
+
+  
     
 }

@@ -210,3 +210,6 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:622)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
 	... 91 more
+2022-02-15 12:41:10 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "Jura E6 (EB) kahviautomaatti"; SQL statement:
+SELECT * FROM PRODUCT WHERE NAME [22018-200]

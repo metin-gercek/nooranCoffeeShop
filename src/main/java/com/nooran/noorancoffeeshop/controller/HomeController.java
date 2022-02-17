@@ -30,12 +30,13 @@ public class HomeController {
     }
 
     @GetMapping("/shop")
-    public String shop(Model model) {
+    public String shop(Model model, String keyword) {
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
         model.addAttribute("suppliers", supplierService.getAllSupplier());
-        model.addAttribute("products", productService.getAllProduct());
         model.addAttribute("cartCount", GlobalData.cart.size());
+
+        model.addAttribute("products", productService.getAllProduct());
         return "shop";
     }
 

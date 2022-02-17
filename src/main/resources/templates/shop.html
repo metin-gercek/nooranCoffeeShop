@@ -88,11 +88,12 @@
               </ul>
             </div>
           </div>
-        </nav>
+    </nav>
         <div class="container" style="margin-top: 65px"  >
           <div class="row">
             <div class="col-sm-3">
-              <h4 style="color: #9C0F48 !important; margin-top: 30px;"></h4>
+              <input type="text" id="txtSearch" name="keyword">
+              <!-- <h4 style="color: #9C0F48 !important; margin-top: 30px;"></h4> -->
               <ul class="list-group">
                 <a th:href="@{/shop}" style="text-decoration: none; color: #f9e4d4;" 
                   ><li class="list-group-item" style="background-color: #9C0F48 !important; border-radius: 10px; margin-bottom: 5px;">All Products</li></a
@@ -106,7 +107,7 @@
               </ul>
             </div>
             <div class="col-sm-9" >
-              <div
+              <div 
                 class="card"
                 style="margin-top: 20px; background-color: #f9e4d4;"
                 th:each="product : ${products}"
@@ -153,17 +154,8 @@
         ></script>
         <script
           src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          integrity="sha38 -wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
           crossorigin="anonymous"
         ></script>
   </body>
-</html>
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-      integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
-      crossorigin="anonymous"
-    />
-    <title>Document</title>
-  </head>
 </html>
