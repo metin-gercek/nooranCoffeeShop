@@ -11,8 +11,8 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Document</title>
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body style="background-color: #f9e4d4 !important;">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #f9e4d4 !important;" >
     <div class="container-fluid">
         <a class="navbar-brand" href="/">
             <img th:src="@{/images/logo.png}" src="../static/images/logo.png" width="auto" height="40"
@@ -47,13 +47,13 @@
                 <input type="hidden" name="id" th:field="*{id}">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name"
+                    <input type="text" class="form-control" required th:field="*{name}" name="name" id="name" style="background-color: #e78b456c;"
                            placeholder="Enter name">
 
                 </div>
                 <div class="form-group">
                     <label for="category">Select Category</label>
-                    <select class="form-control" th:field="*{categoryId}" id="category" name="category">
+                    <select class="form-control" th:field="*{categoryId}" id="category" style="background-color: #e78b456c;" name="category">
                         <option th:each="category :${categories}"
                                 th:value="${category.id}"
                                 th:text="${category.name}"
@@ -63,7 +63,7 @@
                 
                 <div class="form-group">
                     <label for="manufacturer">Select Manufacturer</label>
-                    <select class="form-control" th:field="*{manufacturerId}" id="manufacturer" name="manufacturer">
+                    <select class="form-control" th:field="*{manufacturerId}" id="manufacturer" style="background-color: #e78b456c;" name="manufacturer">
                         <option th:each="manufacturer :${manufacturers}"
                                 th:value="${manufacturer.id}"
                                 th:text="${manufacturer.name}"
@@ -73,7 +73,7 @@
                 
                 <div class="form-group">
                     <label for="supplier">Select Supplier</label>
-                    <select class="form-control" th:field="*{supplierId}" id="supplier" name="supplier">
+                    <select class="form-control" th:field="*{supplierId}" id="supplier" style="background-color: #e78b456c;"name="supplier">
                         <option th:each="supplier :${suppliers}"
                                 th:value="${supplier.id}"
                                 th:text="${supplier.name}"
@@ -83,25 +83,25 @@
                 
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="number" class="form-control" required th:field="*{price}" name="price" id="price"
+                    <input type="number" style="background-color: #e78b456c;"class="form-control" required th:field="*{price}" name="price" id="price"
                            placeholder="Price">
                 </div>
                 <div class="form-group">
                     <label for="description">Product Description</label>
-                    <textarea class="form-control" rows="5" th:field="*{description}" name="description" id="description"></textarea>
+                    <textarea class="form-control" rows="5" th:field="*{description}" name="description" id="description" style="background-color: #e78b456c;"></textarea>
                 </div>
             </div>
             <div class="col-sm-5">
                 <p>Product Image</p>
-                <div class="custom-file">
-                    <input type="file"  class="custom-file-input" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
-                    <label class="custom-file-label" for="productImage">Choose file</label>
+                <div class="custom-file" >
+                    <input type="file"   class="custom-file-input" name="productImage" accept="image/jpeg, image/png"  id="productImage"/>
+                    <label class="custom-file-label" style="background-color: #e78b456c;" for="productImage" >Choose file</label>
                 </div>
                 <div class="form-group">
                     <img src="#" id="imgPreview" height="100px" width="100px" th:src="@{${'/productImages/' + productDTO.imageName}}" style="margin-top: 20px" alt=" ">
                 </div>
                 <input type="hidden" name="imgName" th:value="${productDTO.imageName}">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn" style="background-color: #9C0F48 !important; color: #f9e4d4;border-radius: 10px;">Submit</button>
             </div>
         </div>
     </form>
