@@ -2,19 +2,22 @@ package com.nooran.noorancoffeeshop.controller;
 
 
 
-import com.nooran.noorancoffeeshop.global.GlobalData;
 
+import com.nooran.noorancoffeeshop.global.GlobalData;
+import com.nooran.noorancoffeeshop.model.Product;
 import com.nooran.noorancoffeeshop.service.CategoryService;
 import com.nooran.noorancoffeeshop.service.ManufacturerService;
 import com.nooran.noorancoffeeshop.service.ProductService;
 import com.nooran.noorancoffeeshop.service.SupplierService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.data.domain.Page;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+
 
 @Controller
 public class HomeController {
@@ -33,20 +36,37 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/shop")
+     @GetMapping("/shop")
     public String shop(Model model, String keyword) {
 
-
+        /*
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
         model.addAttribute("suppliers", supplierService.getAllSupplier());
         model.addAttribute("cartCount", GlobalData.cart.size());
 
-        model.addAttribute("products", productService.getAllProduct());
+        model.addAttribute("products", productService.getAllProduct()); */
+        return findPaginated(0, model);
+    } 
+
+    //pagination
+
+    @GetMapping("/shop/page/{pageno}")
+    public String findPaginated(@PathVariable int pageno, Model model) {
+
+        Page<Product> productList = productService.getProductPaginate(pageno, 6);
+        model.addAttribute("products", productList);
+        model.addAttribute("currentPage", pageno);
+        model.addAttribute("totalPages", productList.getTotalPages());
+        model.addAttribute("totalItem", productList.getTotalElements());
+        model.addAttribute("categories", categoryService.getAllCategory());
+        model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
+        model.addAttribute("suppliers", supplierService.getAllSupplier());
+        model.addAttribute("cartCount", GlobalData.cart.size());
+
         return "shop";
     }
 
-    
 
     @GetMapping("/shop/category/{id}")
     public String shopByCategory(Model model, @PathVariable int id) {

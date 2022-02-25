@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.nooran.noorancoffeeshop.model.Product;
 
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -12,6 +13,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllByManufacturer_Id(int id);
     List<Product> findAllBySupplier_Id(int id);
 
-    
+    // List<Product> findAll(Pageable pageable);
     
 }

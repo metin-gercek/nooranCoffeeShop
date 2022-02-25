@@ -8,7 +8,9 @@ import com.nooran.noorancoffeeshop.model.Product;
 import com.nooran.noorancoffeeshop.repository.ProductRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -47,6 +49,12 @@ public class ProductService {
     
     public List<Product> getAllProductsBySupplierId(int id) {
         return productRepository.findAllBySupplier_Id(id);
+    }
+
+    public Page<Product> getProductPaginate(int currentPage, int size) {
+
+        PageRequest pageable = PageRequest.of(currentPage, size);
+        return productRepository.findAll(pageable);
     }
 
     
