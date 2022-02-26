@@ -132,6 +132,9 @@
             ></a>
           </ul>
         </div>
+
+        
+
         <div class="col-sm-9">
           <div
             class="card"
@@ -145,9 +148,8 @@
               >
                 <img
                   class=""
-                  style="border: #9c0f48 solid 3px; border-radius: 5px"
-                  height="250px"
-                  width="auto"
+                  style="max-width: 100%; border: #9c0f48 solid 3px; border-radius: 5px"
+                  
                   th:src="@{${'/productImages/' + product.imageName}}"
                   th:alt="${product.name}"
                 />
