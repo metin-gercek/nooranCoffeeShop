@@ -168,25 +168,37 @@
               </div>
             </div>
           </div>
+
+          <div class="mt-2">
+            
+            <nav aria-label="Page navigation example">
+
+              <p class="float-left mt-1">Total Product: [[${totalItem}]]</p>
+              
+              <ul class="pagination d-flex justify-content-end">
+                
+                <li th:if="${currentPage !=0}" class="page-item"><a class="page-link" th:href="@{'/shop/page/'+${currentPage-1}} ">Previous</a></li>
+      
+      
+                <li th:each="i:${#numbers.sequence(1, totalPages)}" th:classappend="${currentPage==i-1 ? 'active' : ''}" class="page-item">
+                  <a class="page-link" th:href="@{'/shop/page/'+${i-1}} ">[[${i}]]</a></li>
+               
+                <li th:if="${currentPage+1 != totalPages}" class="page-item"><a class="page-link" th:href="@{'/shop/page/'+${currentPage+1}} ">Next</a></li>
+
+                
+              </ul>
+              
+            </nav>
+          </div>
+
+
         </div>
       </div>
     </div>
 
-    <p>Total Product: [[${totalItem}]]</p>
+    
 
-    <div class="container">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li th:if="${currentPage !=0}" class="page-item"><a class="page-link" th:href="@{'/shop/page/'+${currentPage-1}} ">Previous</a></li>
-
-
-          <li th:each="i:${#numbers.sequence(1, totalPages)}" th:classappend="${currentPage==i-1 ? 'active' : ''}" class="page-item">
-            <a class="page-link" th:href="@{'/shop/page/'+${i-1}} ">[[${i}]]</a></li>
-         
-          <li th:if="${currentPage+1 != totalPages}" class="page-item"><a class="page-link" th:href="@{'/shop/page/'+${currentPage+1}} ">Next</a></li>
-        </ul>
-      </nav>
-    </div>
+    
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
