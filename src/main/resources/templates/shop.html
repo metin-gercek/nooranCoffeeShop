@@ -92,15 +92,25 @@
     </nav>
     <div class="container" style="margin-top: 65px">
       <div class="row">
-        <div class="col-sm-3">
-          <!-- <form th:href="@{/shop}" >
-                <div>
-                  <input type="text" id="txtSearch" name="keyword" class="form-control">
-                </div>
-                <div>
-                  <input type="submit" value="Go" class="btn btn-success form-control">
-                </div>
-              </form> -->
+        <div class="col-sm-3 pt-4">
+          <form th:action="@{/shop}" class="form-inline mb-2">
+            <div>
+              <input
+                type="text"
+                id="txtSearch"
+                name="keyword"
+                class="form-control"
+              />
+            </div>
+            <div>
+              <input
+                type="submit"
+                value="Go"
+                class="btn btn-success form-control"
+              />
+            </div>
+          </form>
+
           <!-- <h4 style="color: #9C0F48 !important; margin-top: 30px;"></h4> -->
           <ul class="list-group">
             <a th:href="@{/shop}" style="text-decoration: none; color: #f9e4d4"
@@ -133,8 +143,6 @@
           </ul>
         </div>
 
-        
-
         <div class="col-sm-9">
           <div
             class="card"
@@ -148,8 +156,11 @@
               >
                 <img
                   class=""
-                  style="max-width: 100%; border: #9c0f48 solid 3px; border-radius: 5px"
-                  
+                  style="
+                    max-width: 100%;
+                    border: #9c0f48 solid 3px;
+                    border-radius: 5px;
+                  "
                   th:src="@{${'/productImages/' + product.imageName}}"
                   th:alt="${product.name}"
                 />
@@ -172,35 +183,41 @@
           </div>
 
           <div class="mt-2">
-            
             <nav aria-label="Page navigation example">
-
               <p class="float-left mt-1">Total Product: [[${totalItem}]]</p>
-              
-              <ul class="pagination d-flex justify-content-end">
-                
-                <li th:if="${currentPage !=0}" class="page-item"><a class="page-link" th:href="@{'/shop/page/'+${currentPage-1}} ">Previous</a></li>
-      
-      
-                <li th:each="i:${#numbers.sequence(1, totalPages)}" th:classappend="${currentPage==i-1 ? 'active' : ''}" class="page-item">
-                  <a class="page-link" th:href="@{'/shop/page/'+${i-1}} ">[[${i}]]</a></li>
-               
-                <li th:if="${currentPage+1 != totalPages}" class="page-item"><a class="page-link" th:href="@{'/shop/page/'+${currentPage+1}} ">Next</a></li>
 
-                
+              <ul class="pagination d-flex justify-content-end">
+                <li th:if="${currentPage !=0}" class="page-item">
+                  <a
+                    class="page-link"
+                    th:href="@{'/shop/page/'+${currentPage-1}} "
+                    >Previous</a
+                  >
+                </li>
+
+                <li
+                  th:each="i:${#numbers.sequence(1, totalPages)}"
+                  th:classappend="${currentPage==i-1 ? 'active' : ''}"
+                  class="page-item"
+                >
+                  <a class="page-link" th:href="@{'/shop/page/'+${i-1}} "
+                    >[[${i}]]</a
+                  >
+                </li>
+
+                <li th:if="${currentPage+1 != totalPages}" class="page-item">
+                  <a
+                    class="page-link"
+                    th:href="@{'/shop/page/'+${currentPage+1}} "
+                    >Next</a
+                  >
+                </li>
               </ul>
-              
             </nav>
           </div>
-
-
         </div>
       </div>
     </div>
-
-    
-
-    
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

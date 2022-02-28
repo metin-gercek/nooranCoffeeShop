@@ -19,9 +19,18 @@ public class ProductService {
    
     
 
+    // @Autowired
+    // ProductRepository productRepository;
+    // public List<Product> getAllProduct() {
+    //     return productRepository.findAll();
+    // }
+
     @Autowired
     ProductRepository productRepository;
-    public List<Product> getAllProduct() {
+    public List<Product> getAllProduct(String keyword) {
+        if (keyword != null) {
+            return productRepository.search(keyword);
+        }
         return productRepository.findAll();
     }
 

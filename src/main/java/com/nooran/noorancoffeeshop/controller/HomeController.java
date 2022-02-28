@@ -12,7 +12,7 @@ import com.nooran.noorancoffeeshop.service.SupplierService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +39,8 @@ public class HomeController {
      @GetMapping("/shop")
     public String shop(Model model, String keyword) {
 
+        
+
         /*
         model.addAttribute("categories", categoryService.getAllCategory());
         model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
@@ -46,26 +48,58 @@ public class HomeController {
         model.addAttribute("cartCount", GlobalData.cart.size());
 
         model.addAttribute("products", productService.getAllProduct()); */
-        return findPaginated(0, model);
+        return findPaginated(0, model, keyword);
     } 
 
     //pagination
 
     @GetMapping("/shop/page/{pageno}")
-    public String findPaginated(@PathVariable int pageno, Model model) {
+    public String findPaginated(@PathVariable int pageno, Model model, @Param("keyword") String keyword) {
+        
+        if(keyword != null) {
+            Page<Product> productList = productService.getProductPaginate(pageno, 6);
+            model.addAttribute("products", productService.getAllProduct(keyword));
+            // model.addAttribute("products", productList);
+            model.addAttribute("currentPage", pageno);
+            model.addAttribute("totalPages", productList.getTotalPages());
+            model.addAttribute("totalItem", productList.getTotalElements());
+            model.addAttribute("categories", categoryService.getAllCategory());
+            model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
+            model.addAttribute("suppliers", supplierService.getAllSupplier());
+            model.addAttribute("cartCount", GlobalData.cart.size());
 
-        Page<Product> productList = productService.getProductPaginate(pageno, 6);
-        model.addAttribute("products", productList);
-        model.addAttribute("currentPage", pageno);
-        model.addAttribute("totalPages", productList.getTotalPages());
-        model.addAttribute("totalItem", productList.getTotalElements());
-        model.addAttribute("categories", categoryService.getAllCategory());
-        model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
-        model.addAttribute("suppliers", supplierService.getAllSupplier());
-        model.addAttribute("cartCount", GlobalData.cart.size());
-
+        } else {
+            Page<Product> productList = productService.getProductPaginate(pageno, 6);
+            // model.addAttribute("products", productService.getAllProduct(keyword));
+            model.addAttribute("products", productList);
+            model.addAttribute("currentPage", pageno);
+            model.addAttribute("totalPages", productList.getTotalPages());
+            model.addAttribute("totalItem", productList.getTotalElements());
+            model.addAttribute("categories", categoryService.getAllCategory());
+            model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
+            model.addAttribute("suppliers", supplierService.getAllSupplier());
+            model.addAttribute("cartCount", GlobalData.cart.size());
+        }
         return "shop";
     }
+
+
+    // @GetMapping("/shop/page/{pageno}")
+    // public String findPaginated(@PathVariable int pageno, Model model) {
+        
+   
+    //         Page<Product> productList = productService.getProductPaginate(pageno, 6);
+    //         model.addAttribute("products", productList);
+    //         model.addAttribute("products", productList);
+    //         model.addAttribute("currentPage", pageno);
+    //         model.addAttribute("totalPages", productList.getTotalPages());
+    //         model.addAttribute("totalItem", productList.getTotalElements());
+    //         model.addAttribute("categories", categoryService.getAllCategory());
+    //         model.addAttribute("manufacturers", manufacturerService.getAllManufacturer());
+    //         model.addAttribute("suppliers", supplierService.getAllSupplier());
+    //         model.addAttribute("cartCount", GlobalData.cart.size());
+    //     return "shop";
+    // }
 
 
     @GetMapping("/shop/category/{id}")
