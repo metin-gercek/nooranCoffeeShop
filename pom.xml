@@ -14,7 +14,7 @@
 	<name>nooran-coffee-shop</name>
 	<description>Nooran coffee shop</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>8</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
