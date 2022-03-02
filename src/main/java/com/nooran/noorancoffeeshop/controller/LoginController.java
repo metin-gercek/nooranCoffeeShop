@@ -54,4 +54,8 @@ public class LoginController {
         return "redirect:/";
     }
     
+    @GetMapping("/password")
+    public String passwordGet() {
+        return "password";
+    }
 }
