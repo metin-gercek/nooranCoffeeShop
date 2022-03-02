@@ -55,7 +55,9 @@
         <tr th:each="supplier, iStat : ${suppliers}">
             <th scope="row" th:text="${iStat.index + 1}">1</th>
             <td th:text="${supplier.contactPerson}"></td>
-            <td th:text="${supplier.contactPersonEmail}"></td>
+            <td  >
+                <a th:href="@{mailto:{to}(to=${supplier.contactPersonEmail})}" th:text="${supplier.contactPersonEmail}"></a>
+            </td>
             <td th:text="${supplier.name}"></td>
 
             <td><a href="" th:href="@{/admin/suppliers/delete/{id}(id=${supplier.id})}" class="btn btn-danger">Delete</a></td>
