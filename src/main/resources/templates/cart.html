@@ -107,10 +107,14 @@
                     Cart (<span th:text="${cartCount}">2</span> items)
                   </h5>
 
-                  <div class="row mb-4" th:each="item, iStat : ${cart}">
-                    <div class="col-md-5 col-lg-3 col-xl-3">
+                  <div class="row pt-4 pb-4 mb-4 " th:each="item, iStat : ${cart}" style="border: #9c0f48 solid 2px; background-color: #f5d3ba; " >
+                    <div class="col-md-5 col-lg-3 col-xl-3" >
                       <div class="mb-3 mb-md-0">
                         <img
+                        style="
+                        max-width: 100%;
+                        border: #9c0f48 solid 3px;
+                        border-radius: 5px;"
                           class="img-fluid w-100"
                           th:src="@{${'/productImages/' + item.imageName}}"
                           src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg"
@@ -122,7 +126,7 @@
                       <div>
                         <div class="d-flex justify-content-between">
                           <div>
-                            <h5 th:text="${item.name}">Blue denim shirt</h5>
+                            <h5 th:text="${item.name}"></h5>
                           </div>
                         </div>
                         <div
@@ -167,12 +171,12 @@
             <!--Grid column-->
 
             <!--Grid column-->
-            <div class="col-lg-4">
+            <div class="col-lg-4" >
               <!-- Card -->
               <div class="card mb-4">
                 <div
                   class="card-body"
-                  style="background-color: #f9e4d4 !important"
+                  style="background-color: #f9e4d4 !important; border: #9c0f48 solid 2px"
                 >
                   <h5 class="mb-3">The total amount</h5>
 
@@ -227,7 +231,7 @@
               <div class="card mb-4">
                 <div
                   class="card-body"
-                  style="background-color: #f9e4d4 !important"
+                  style="background-color: #f9e4d4 !important; border: #9c0f48 solid 2px"
                 >
                   <a
                     class="dark-grey-text text-info d-flex justify-content-between"
