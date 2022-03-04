@@ -29,7 +29,7 @@ public class ProductService {
     ProductRepository productRepository;
     public List<Product> getAllProduct(String keyword) {
         if (keyword != null) {
-            return productRepository.search(keyword);
+            return productRepository.findByNameContainingIgnoreCase(keyword);
         }
         return productRepository.findAll();
     }
