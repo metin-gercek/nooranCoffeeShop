@@ -23,7 +23,7 @@
       integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
       crossorigin="anonymous"
     />
-    <title>Document</title>
+    <title>Noora's Coffee Shop</title>
   </head>
   <body style="background-color: #f9e4d4 !important">
     <nav
@@ -112,10 +112,8 @@
               />
             </div>
             <div>
-              <input style="
-              background-color: #9c0f48 !important;
-              color: #f9e4d4;
-            "
+              <input
+                style="background-color: #9c0f48 !important; color: #f9e4d4"
                 @keypress.enter.prevent
                 type="submit"
                 value="Go"
@@ -190,7 +188,13 @@
                     style="background-color: #9c0f48 !important; color: #f9e4d4"
                     >View Product</a
                   >
-                  <a href="" th:href="@{/addToCart/{id}(id = ${product.id})}" class="btn " style="background-color: #9C0F48 !important; color: #f9e4d4;">Add to cart</a>
+                  <a
+                    href=""
+                    th:href="@{/addToCart/{id}(id = ${product.id})}"
+                    class="btn"
+                    style="background-color: #9c0f48 !important; color: #f9e4d4"
+                    >Add to cart</a
+                  >
                 </div>
               </div>
             </div>
