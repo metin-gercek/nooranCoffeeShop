@@ -26,12 +26,10 @@
       crossorigin="anonymous"
     />
 
-    <title>Document</title>
+    <title>Error</title>
     <style>
       nav {
         background-color: #f9e4d4 !important;
-
-    
       }
 
       header {
@@ -42,20 +40,21 @@
       }
 
       footer {
-        background-color: #f8c299; height: 106px;
+        background-color: #f8c299;
+        height: 106px;
       }
 
       footer div a {
         border: 1px solid;
-            background-color: #d67d3e;
-            color: #f9e4d4;
-            padding: 10px 25px;
-            border-radius: 5px;
-            text-decoration: none;
+        background-color: #d67d3e;
+        color: #f9e4d4;
+        padding: 10px 25px;
+        border-radius: 5px;
+        text-decoration: none;
       }
     </style>
   </head>
-  <body style="background-color: #f9e4d4 !important;">
+  <body style="background-color: #f9e4d4 !important">
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="navall">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
@@ -115,7 +114,6 @@
               <a class="nav-link" th:href="@{/cart}" href="#">Cart</a>
             </li>
             <li class="nav-item active">
-              
               <span class="nav-link" th:text="${cartCount}">0</span>
             </li>
           </ul>
@@ -128,16 +126,10 @@
         You don't have admin access
       </h1>
 
-      <a
-        class="btn btn-outline-info btn-lg"
-        th:href="@{/shop}"
-        href="#"
+      <a class="btn btn-outline-info btn-lg" th:href="@{/shop}" href="#"
         >Back</a
       >
-    
     </header>
-
-     
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
