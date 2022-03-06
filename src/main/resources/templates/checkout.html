@@ -273,8 +273,14 @@
                     ></span>
                   </li>
                 </ul>
-
-                <form>
+                <form action="" method="post" th:action="@{/payNow}" >
+                  <button type="submit" style="
+                  background-color: #9c0f48 !important;
+                  color: #f9e4d4;
+                  border-radius: 10px;
+                " class="btn  btn-block waves-effect waves-light">Pay Now</button>
+                </form>
+                <!-- <form>
                   <a
                     onclick="orderRecieved()"
                     th:href="@{/shop}"
@@ -287,7 +293,7 @@
                   >
                     Pay Now
                   </a>
-                </form>
+                </form> -->
               </div>
             </div>
             <!-- Card -->
